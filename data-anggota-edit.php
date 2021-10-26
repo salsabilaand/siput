@@ -138,7 +138,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Alamat</label>
+                        <label>Alamat</label>
                         <input type="text" name="alamat_umkm" value="<?php echo $r_tampil_anggota['alamat_umkm']; ?>"  class="form-control">
                       </div>
                     </div>
@@ -153,7 +153,8 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Username</label>
-                        <input type="text" name="username_anggota" disabled="" value="<?php echo $r_tampil_anggota['username_anggota']; ?>" class="form-control">
+                        <input type="text" disabled="" value="<?php echo $r_tampil_anggota['username_anggota']; ?>" class="form-control">
+                        <input type="hidden" name="username_anggota" value="<?php echo $r_tampil_anggota['username_anggota']; ?>" class="form-control">
                       </div>
                     </div>
                   </div>
