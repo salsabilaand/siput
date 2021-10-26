@@ -45,7 +45,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
+          <li>
             <a href="data-anggota.php">
               <i class="nc-icon nc-circle-10"></i>
               <p>Data Akun UMKM</p>
@@ -63,7 +63,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
               <p>Data Akun Admin</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="data-artikel-admin.php">
               <i class="nc-icon nc-single-copy-04"></i>
               <p>Data Artikel Admin</p>
@@ -124,17 +124,26 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Data Akun UMKM</h4>
-                <form method="POST">
-                <div class="input-group no-border">
-                    <input type="text" name="pencarian" class="form-control" placeholder="Search...">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                          <button type="submit" name="search" class="tombol" style="border:none;"><i class="nc-icon nc-zoom-split"></i></button>
+                <h4 class="card-title"> Data Artikel Admin</h4>
+                <div class="row">
+                    <div class="update col-sm-6">
+                      <form action="data-artikel-admin-input.php">
+                        <input type="submit" name="simpan" value="Tambah Artikel" class="btn btn-primary btn-round">
+                      </form>
+                    </div>
+                    <div class="update col-sm-6">
+                      <form method="POST">
+                        <div class="input-group no-border">
+                            <input type="text" name="pencarian" class="form-control" placeholder="Search...">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                  <button type="submit" name="search" class="tombol" style="border:none;"><i class="nc-icon nc-zoom-split"></i></button>
+                                </div>
+                            </div>
                         </div>
+                      </form>
                     </div>
                 </div>
-                </form>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -144,31 +153,22 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                         No.
                       </th>
                       <th>
-                        Nama
+                        Penulis
                       </th>
                       <th>
-                        Usaha
+                        Judul
                       </th>
                       <th>
-                        Alamat
+                        Gambar
                       </th>
                       <th>
-                        Email
+                        Caption
                       </th>
                       <th>
-                        Username
+                        Isi
                       </th>
                       <th>
-                        Password
-                      </th>
-                      <th>
-                        Telepon
-                      </th>
-                      <th>
-                        NIP
-                      </th>
-                      <th>
-                        No. Izin
+                        Tanggal Terbit
                       </th>
                       <th id="label-opsi">
                         Opsi
@@ -190,23 +190,21 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                     if($_SERVER['REQUEST_METHOD'] == "POST"){
                       $pencarian = trim(mysqli_real_escape_string($db, $_POST['pencarian']));
                       if($pencarian != ""){
-                        $sql = "SELECT * FROM tbl_anggota WHERE nama_umkm LIKE '%$pencarian%'
-                            OR username_anggota LIKE '%$pencarian%'
-                            OR nama_anggota LIKE '%$pencarian%'";
+                        $sql = "SELECT * FROM tbl_artikel_admin WHERE judul_artikel LIKE '%$pencarian%'";
                         
                         $query = $sql;
                         $queryJml = $sql;	
                             
                       }
                       else {
-                        $query = "SELECT * FROM tbl_anggota LIMIT $posisi, $batas";
-                        $queryJml = "SELECT * FROM tbl_anggota";
+                        $query = "SELECT * FROM tbl_artikel_admin LIMIT $posisi, $batas";
+                        $queryJml = "SELECT * FROM tbl_artikel_admin";
                         $no = $posisi * 1;
                       }			
                     }
                     else {
-                      $query = "SELECT * FROM tbl_anggota LIMIT $posisi, $batas";
-                      $queryJml = "SELECT * FROM tbl_anggota";
+                      $query = "SELECT * FROM tbl_artikel_admin LIMIT $posisi, $batas";
+                      $queryJml = "SELECT * FROM tbl_artikel_admin";
                       $no = $posisi * 1;
                     }
                     
@@ -217,18 +215,15 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                     ?>
                     <tr>
                       <td><?php echo $nomor; ?></td>
-                      <td><?php echo $r_tampil_anggota['nama_anggota']; ?></td>
-                      <td><?php echo $r_tampil_anggota['nama_umkm']; ?></td>
-                      <td><?php echo $r_tampil_anggota['alamat_umkm']; ?></td>
-                      <td><?php echo $r_tampil_anggota['email_anggota']; ?></td>
-                      <td><?php echo $r_tampil_anggota['username_anggota']; ?></td>
-                      <td><?php echo $r_tampil_anggota['password_anggota']; ?></td>
-                      <td><?php echo $r_tampil_anggota['telepon_anggota']; ?></td>
-                      <td><?php echo $r_tampil_anggota['nip_anggota']; ?></td>
-                      <td><?php echo $r_tampil_anggota['no_izin_umkm']; ?></td>
+                      <td><?php echo $r_tampil_anggota['username_admin']; ?></td>
+                      <td><?php echo $r_tampil_anggota['judul_artikel']; ?></td>
+                      <td><?php echo $r_tampil_anggota['gambar_artikel']; ?></td>
+                      <td><?php echo $r_tampil_anggota['caption_gambar_artikel']; ?></td>
+                      <td><?php echo $r_tampil_anggota['isi_artikel']; ?></td>
+                      <td><?php echo $r_tampil_anggota['tanggal_artikel']; ?></td>
                       <td>
-                        <div class="tombol-opsi-container"><a href="data-anggota-edit.php?username_anggota=<?php echo $r_tampil_anggota['username_anggota'];?>" class="tombol" style="color:#ef8157; font-weight:bold">Edit</a></div>
-                        <div class="tombol-opsi-container"><a href="data-anggota-hapus.php?username_anggota=<?php echo $r_tampil_anggota['username_anggota']; ?>" onclick = "return confirm ('Apakah Anda Yakin Akan Menghapus Data Ini?')" class="tombol" style="color:#ef8157; font-weight:bold">Hapus</a></div>
+                        <div class="tombol-opsi-container"><a href="data-artikel-admin-edit.php?judul_artikel=<?php echo $r_tampil_anggota['judul_artikel'];?>" class="tombol" style="color:#ef8157; font-weight:bold">Edit</a></div>
+                        <div class="tombol-opsi-container"><a href="data-artikel-admin-hapus.php?judul_artikel=<?php echo $r_tampil_anggota['judul_artikel']; ?>" onclick = "return confirm ('Apakah Anda Yakin Akan Menghapus Data Ini?')" class="tombol" style="color:#ef8157; font-weight:bold">Hapus</a></div>
                       </td>			
                     </tr>		
                     <?php $nomor++; }
@@ -261,7 +256,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
             </div>
           </div>
       </div>
-      <footer class="footer" style="position: absolute; bottom: 0; width: -webkit-fill-available;">
+      <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">

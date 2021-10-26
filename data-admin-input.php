@@ -52,7 +52,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
               </a>
             </li>
             <li>
-              <a href="javascript:;">
+              <a href="data-artikel-anggota.php">
                 <i class="nc-icon nc-single-copy-04"></i>
                 <p>Data Artikel UMKM</p>
               </a>
@@ -64,7 +64,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
               </a>
             </li>
             <li>
-            <a href="javascript:;">
+            <a href="data-artikel-admin.php">
               <i class="nc-icon nc-single-copy-04"></i>
               <p>Data Artikel Admin</p>
             </a>
@@ -136,7 +136,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                   </div>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <input type="submit" name="simpan" value="Simpan" class="btn btn-primary btn-round">
+                      <input type="submit" name="simpan" value="simpan" class="btn btn-primary btn-round">
                     </div>
                   </div>
                 </form>

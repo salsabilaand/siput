@@ -6,8 +6,7 @@ $password_admin = $_POST['password_admin'];
 	
 if(isset($_POST['simpan'])){
 
-	"INSERT INTO tbl_admin
-		VALUES('$username_admin','$password_admin')";
+	"INSERT INTO tbl_admin (username_admin, password_admin) VALUES ('$username_admin','$password_admin')";
 	$query = mysqli_query($db, $sql);
 
 	header("location: data-admin.php");

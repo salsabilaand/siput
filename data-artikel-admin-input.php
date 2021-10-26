@@ -45,25 +45,25 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="data-anggota.php">
-              <i class="nc-icon nc-circle-10"></i>
-              <p>Data Akun UMKM</p>
-            </a>
-          </li>
           <li>
-            <a href="data-artikel-anggota.php">
-              <i class="nc-icon nc-single-copy-04"></i>
-              <p>Data Artikel UMKM</p>
-            </a>
-          </li>
-          <li>
-            <a href="data-admin.php">
-              <i class="nc-icon nc-circle-10"></i>
-              <p>Data Akun Admin</p>
-            </a>
-          </li>
-          <li>
+              <a href="data-anggota.php">
+                <i class="nc-icon nc-circle-10"></i>
+                <p>Data Akun UMKM</p>
+              </a>
+            </li>
+            <li>
+              <a href=data-artikel-anggota.php>
+                <i class="nc-icon nc-single-copy-04"></i>
+                <p>Data Artikel UMKM</p>
+              </a>
+            </li>
+            <li>
+              <a href="data-admin.php">
+                <i class="nc-icon nc-circle-10"></i>
+                <p>Data Akun Admin</p>
+              </a>
+            </li>
+            <li class="active ">
             <a href="data-artikel-admin.php">
               <i class="nc-icon nc-single-copy-04"></i>
               <p>Data Artikel Admin</p>
@@ -108,81 +108,53 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
           </div>
         </div>
       </nav>
-      <?php
-        $username_anggota=$_GET['username_anggota'];
-        $q_tampil_anggota=mysqli_query($db,"SELECT * FROM tbl_anggota WHERE username_anggota='$username_anggota'");
-        $r_tampil_anggota=mysqli_fetch_array($q_tampil_anggota);
-      ?>
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Edit Data Akun Anggota</h5>
+                <h5 class="card-title">Tambah Data Artikel Admin</h5>
               </div>
               <div class="card-body">
-                <form action="data-anggota-edit-proses.php" method="POST" enctype="multipart/form-data">
+                <form action="data-artikel-admin-input-proses.php" method="POST" enctype="multipart/form-data">
                   <div class="row">
-                    <div class="col-md-5 pr-1">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama_anggota" value="<?php echo $r_tampil_anggota['nama_anggota']; ?>"  class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-3 px-1">
-                      <div class="form-group">
-                        <label>Usaha</label>
-                        <input type="text" name="nama_umkm" value="<?php echo $r_tampil_anggota['nama_umkm']; ?>"  class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Alamat</label>
-                        <input type="text" name="alamat_umkm" value="<?php echo $r_tampil_anggota['alamat_umkm']; ?>"  class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="email_anggota" value="<?php echo $r_tampil_anggota['email_anggota']; ?>" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" disabled="" value="<?php echo $r_tampil_anggota['username_anggota']; ?>" class="form-control">
-                        <input type="hidden" name="username_anggota" value="<?php echo $r_tampil_anggota['username_anggota']; ?>" class="form-control">
+                      <label>Penulis</label>
+                        <input type="text" name="username_admin" class="form-control">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>Password</label>
-                        <input type="text" name="password_anggota" value="<?php echo $r_tampil_anggota['password_anggota']; ?>" class="form-control">
+                      <label>Judul</label>
+                        <input type="text" name="judul_artikel" class="form-control">
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-4 pr-1">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label>Telepon</label>
-                        <input type="text" name="telepon_anggota" value="<?php echo $r_tampil_anggota['telepon_anggota']; ?>"  class="form-control">
+                      <label>Gambar</label>
+                        <input type="text" name="gambar_artikel" class="form-control">
                       </div>
                     </div>
-                    <div class="col-md-4 px-1">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label>NIP</label>
-                        <input type="text" name="nip_anggota" value="<?php echo $r_tampil_anggota['nip_anggota']; ?>" class="form-control">
+                      <label>Caption</label>
+                        <input type="text" name="caption_gambar_artikel" class="form-control">
                       </div>
                     </div>
-                    <div class="col-md-4 pl-1">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label>No. Izin</label>
-                        <input type="text" name="no_izin_umkm" value="<?php echo $r_tampil_anggota['no_izin_umkm']; ?>"  class="form-control">
+                      <label>Isi</label>
+                        <textarea name="isi_artikel" class="form-control textarea"></textarea>
                       </div>
                     </div>
                   </div>
@@ -197,7 +169,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
           </div>
         </div>
       </div>
-      <footer class="footer footer-black  footer-white ">
+      <footer class="footer footer-black footer-white ">
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">
