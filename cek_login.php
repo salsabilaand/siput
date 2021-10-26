@@ -7,13 +7,13 @@ include "koneksi.php";
 	{
 			$user	= isset($_POST['user']) ? $_POST['user'] : "";
 			$pass	= isset($_POST['pass']) ? $_POST['pass'] : "";
-			$qry	= mysqli_query($db,"SELECT * FROM tbl_admin WHERE username = '$user' AND password = '$pass'");
+			$qry	= mysqli_query($db,"SELECT * FROM tbl_admin WHERE username_admin = '$user' AND password_admin = '$pass'");
 			$sesi	= mysqli_num_rows($qry);
 
 			if ($sesi == 1)
 			{
 				$data_admin	= mysqli_fetch_array($qry);
-				$_SESSION['sesi'] = $data_admin['username'];
+				$_SESSION['sesi'] = $data_admin['username_admin'];
 				
 				echo "<meta http-equiv='refresh' content='0; url=data-anggota.php?user=$sesi'>";
 			}
