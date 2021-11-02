@@ -109,7 +109,7 @@ include'koneksi.php';
                 <div class="card-body">
                   <h2 class="card-title"><?php echo $r_tampil_anggota['judul_artikel']; ?></h2>
                   <p class="card-text"><?php echo $r_tampil_anggota['isi_artikel']; ?></p>
-                  <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="beranda-detail-artikel.php?judul_artikel=<?php echo $r_tampil_anggota['judul_artikel'];?>" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                   Posted on <?php echo $r_tampil_anggota['tanggal_artikel']; ?> by
@@ -119,7 +119,7 @@ include'koneksi.php';
             <?php $nomor++; }
           }
           else {
-            echo "<tr><td colspan=6>Data Tidak Ditemukan</td></tr>";
+            echo "<p>Data Tidak Ditemukan<p>";
           }?>	
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
@@ -174,15 +174,6 @@ include'koneksi.php';
             </div>
           </div>
         </div>
-
-        <!-- Side Widget
-        <div class="card my-4">
-          <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-          </div>
-        </div> -->
-
       </div>
 
     </div>
