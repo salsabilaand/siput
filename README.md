@@ -1,4 +1,4 @@
-<p><b>Yang sudah dikerjakan: </b><p><br>
-<p>Login Admin</p><br>
-<p>CRUD Admin</p><br>
-<p>Beranda Artikel Admin Terbaru</p><br>
+<p><b>Yang sudah dikerjakan: </b><p>
+<p>Login Admin</p>
+<p>CRUD Admin</p>
+<p>Beranda Artikel Admin Terbaru</p>
