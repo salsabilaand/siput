@@ -35,10 +35,7 @@ include'koneksi.php';
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Beranda
-              <span class="sr-only">(current)</span>
-            </a>
+          <a class="nav-link" href="beranda.php">Beranda</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Tentang</a>
