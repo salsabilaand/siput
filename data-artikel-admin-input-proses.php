@@ -9,7 +9,7 @@ include'koneksi.php';
 	
 if(isset($_POST['simpan'])){
 
-	"INSERT INTO tbl_admin (username_admin, judul_artikel, gambar_artikel, caption_gambar_artikel, isi_artikel) 
+	$sql = "INSERT INTO tbl_artikel_admin (username_admin, judul_artikel, gambar_artikel, caption_gambar_artikel, isi_artikel) 
 	VALUES ('$username_admin','$judul_artikel', '$gambar_artikel', '$caption_gambar_artikel', '$isi_artikel')";
 	$query = mysqli_query($db, $sql);
 

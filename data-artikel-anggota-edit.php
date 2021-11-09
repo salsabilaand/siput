@@ -57,12 +57,12 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                 <p>Data Artikel UMKM</p>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="data-admin.php">
                 <i class="nc-icon nc-circle-10"></i>
                 <p>Data Akun Admin</p>
               </a>
-            </li>
+            </li> -->
             <li>
             <a href="data-artikel-admin.php">
               <i class="nc-icon nc-single-copy-04"></i>

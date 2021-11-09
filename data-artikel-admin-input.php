@@ -57,12 +57,12 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                 <p>Data Artikel UMKM</p>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="data-admin.php">
                 <i class="nc-icon nc-circle-10"></i>
                 <p>Data Akun Admin</p>
               </a>
-            </li>
+            </li> -->
             <li class="active ">
             <a href="data-artikel-admin.php">
               <i class="nc-icon nc-single-copy-04"></i>
@@ -122,7 +122,22 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                     <div class="col-md-12">
                       <div class="form-group">
                       <label>Penulis</label>
-                        <input type="text" name="username_admin" class="form-control">
+                        <!-- <input type="text" name="username_admin" class="form-control"> -->
+                        <select name="username_admin" class="form-control">
+                          <option value="" select="selected">Pilih Nama Admin</option>
+                            <?php
+                              $query = "SELECT * FROM tbl_admin
+                                  
+                                  ORDER BY username_admin";
+
+                              //$sql="SELECT * FROM tbanggota ORDER BY idanggota DESC"; 
+                              $q_tampil_barang = mysqli_query($db, $query); 
+
+                              while($r_tampil_barang=mysqli_fetch_array($q_tampil_barang)) {
+                                echo"<option value=$r_tampil_barang[username_admin]>$r_tampil_barang[username_admin]</option>";
+                              }
+                            ?>
+                        </select>
                       </div>
                     </div>
                   </div>
