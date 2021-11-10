@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login Admin Siput Jombang</title>
+	<title>Login Siput Jombang</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -23,11 +23,11 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
 					<span class="login100-form-title-1">
-						Login Admin Siput Jombang
+						Login Siput Jombang
 					</span>
 				</div>
 
-				<form method="post" action="cek-login.php" class="login100-form validate-form">
+				<form method="post" action="cek-login-umkm.php" class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
 						<input type="text" name="user" class="input100" placeholder="Enter username">
@@ -38,6 +38,20 @@
 						<span class="label-input100">Password</span>
 						<input type="password" name="pass" class="input100" placeholder="Enter password">
 						<span class="focus-input100"></span>
+					</div>
+
+					<div class="flex-sb-m w-full p-b-30">
+						<div>
+							<a href="regis-umkm.php" class="txt1">
+								Belum punya akun?
+							</a>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Kembali ke beranda
+							</a>
+						</div>
 					</div>
 
 					<div class="container-login100-form-btn">

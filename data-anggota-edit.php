@@ -175,7 +175,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <label>NIP</label>
+                        <label>NIK</label>
                         <input type="text" name="nip_anggota" value="<?php echo $r_tampil_anggota['nip_anggota']; ?>" class="form-control">
                       </div>
                     </div>

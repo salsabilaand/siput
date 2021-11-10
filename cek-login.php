@@ -5,8 +5,8 @@ $_SESSION['sesi'] = NULL;
 include "koneksi.php";
 	if( isset($_POST['submit']))
 	{
-			$user	= isset($_POST['user']) ? $_POST['user'] : "";
-			$pass	= isset($_POST['pass']) ? $_POST['pass'] : "";
+			$user	= $_POST['user'];
+			$pass	= md5($_POST['pass']);
 			$qry	= mysqli_query($db,"SELECT * FROM tbl_admin WHERE username_admin = '$user' AND password_admin = '$pass'");
 			$sesi	= mysqli_num_rows($qry);
 

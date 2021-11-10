@@ -16,7 +16,7 @@
     mysqli_query($db,
       "UPDATE tbl_anggota
       SET nama_anggota='$nama_anggota',nama_umkm='$nama_umkm',alamat_umkm='$alamat_umkm', email_anggota='$email_anggota',
-      username_anggota='$username_anggota', password_anggota='$password_anggota', telepon_anggota='$telepon_anggota', 
+      username_anggota='$username_anggota', password_anggota=md5('$password_anggota'), telepon_anggota='$telepon_anggota', 
       nip_anggota='$nip_anggota', no_izin_umkm='$no_izin_umkm'
       WHERE username_anggota='$username_anggota'"
     );

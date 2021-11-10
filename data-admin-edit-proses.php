@@ -9,7 +9,7 @@
     extract($_POST);
     mysqli_query($db,
       "UPDATE tbl_admin
-      SET username_admin='$username_admin', password_admin='$password_admin'
+      SET username_admin='$username_admin', password_admin=md5('$password_admin')
       WHERE username_admin='$username_admin'"
     );
     header("location: data-admin.php");
