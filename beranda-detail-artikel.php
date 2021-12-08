@@ -3,6 +3,7 @@ session_start();
 
 include'koneksi.php';
 
+if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,14 +78,18 @@ include'koneksi.php';
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">Komentar</h2>
-                <div class="mb-3">
+                <form action="komentar-input-proses.php?id_artikel=<?php echo $r_tampil_anggota['id_artikel_admin'];?>" method="POST" enctype="multipart/form-data">
+                  <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama">
-                </div>
-                <div class="mb-3">
+                    <input type="text" value="<?php echo $_SESSION['sesi']; ?>"  disabled="" class="form-control" id="exampleFormControlInput1">
+                    <input type="hidden" nama="username_anggota" value="<?php echo $_SESSION['sesi']; ?>" class="form-control" id="exampleFormControlInput1">
+                  </div>
+                  <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Isi Komentar</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
+                    <textarea name="isi_komentar" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <input type="submit" name="simpan" value="kirim" class="btn btn-primary">
+                </form>
             </div>
         </div>
       </div>
@@ -110,3 +115,12 @@ include'koneksi.php';
 </body>
 
 </html>
+<?php
+}
+else {
+	echo "<script>
+		alert('Anda Harus Login Dahulu!');
+	</script>";
+	header('location:login.php');
+}
+?>

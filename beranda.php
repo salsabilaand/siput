@@ -3,6 +3,7 @@ session_start();
 
 include'koneksi.php';
 
+if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,3 +198,12 @@ include'koneksi.php';
 </body>
 
 </html>
+<?php
+}
+else {
+	echo "<script>
+		alert('Anda Harus Login Dahulu!');
+	</script>";
+	header('location:login-umkm.php');
+}
+?>

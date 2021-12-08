@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2021 at 12:00 AM
+-- Generation Time: Dec 08, 2021 at 02:34 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_admin` (
   `username_admin` varchar(11) NOT NULL,
-  `password_admin` varchar(11) NOT NULL
+  `password_admin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -38,8 +38,9 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`username_admin`, `password_admin`) VALUES
-('caca', 'caca1234'),
-('may', 'may1234');
+('caca', 'cd799045c409249dcfce575f83e4102b'),
+('may', 'e3a8589d2558d41d4fce6f6e33f51e26'),
+('salsa', '16130029e46c2b7557bef0e039402814');
 
 -- --------------------------------------------------------
 
@@ -54,7 +55,7 @@ CREATE TABLE `tbl_anggota` (
   `alamat_umkm` text NOT NULL,
   `email_anggota` varchar(30) NOT NULL,
   `username_anggota` varchar(30) NOT NULL,
-  `password_anggota` varchar(30) NOT NULL,
+  `password_anggota` varchar(50) NOT NULL,
   `telepon_anggota` varchar(30) NOT NULL,
   `nip_anggota` varchar(30) NOT NULL,
   `no_izin_umkm` varchar(30) NOT NULL
@@ -65,8 +66,8 @@ CREATE TABLE `tbl_anggota` (
 --
 
 INSERT INTO `tbl_anggota` (`id_anggota`, `nama_anggota`, `nama_umkm`, `alamat_umkm`, `email_anggota`, `username_anggota`, `password_anggota`, `telepon_anggota`, `nip_anggota`, `no_izin_umkm`) VALUES
-(2, 'Mawar', 'Batik Print', 'Kaliwungu - Jombang', 'ex@gmail.com', 'mawar', 'mawar1234', '085678765436', '357534234324', '111223435666'),
-(3, 'Melati', 'Kain Songket', 'Peterongan - Jombang', 'mel@gmail.com', 'melati', 'melati1234', '085678644678', '357834425245', '112234356885');
+(2, 'Mawar', 'Batik Print', 'Kaliwungu - Jombang', 'ex@gmail.com', 'mawar', '981adfdfdb3d8b2824b64870a04e1094', '085678765436', '357534234324', '111223435666'),
+(3, 'Melati', 'Kain Songket', 'Peterongan - Jombang', 'mel@gmail.com', 'melati', '35753b71221383a69f12fd1be2f6fa93', '085678644678', '357834425245', '112234356885');
 
 -- --------------------------------------------------------
 
@@ -116,6 +117,20 @@ INSERT INTO `tbl_artikel_anggota` (`id_artikel_anggota`, `id_anggota`, `judul_ar
 (2, 2, 'At accusamus', 'accusamus.png', 'At vero eos accusamus', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.', '2021-10-27 01:00:18'),
 (3, 2, 'Pellentesque sodales', 'sodales.jpg', 'Pellentesque sodales ullamcorper facilisis.', 'Pellentesque sodales ullamcorper facilisis. Etiam tortor quam, mattis vestibulum mattis eu, faucibus vitae diam. Nam hendrerit ante quis magna egestas pellentesque. Vestibulum mattis nunc ut nisi fringilla, eget efficitur justo elementum. Pellentesque a interdum urna, eget venenatis nunc. Sed et velit neque. Mauris ligula lectus, hendrerit vel ullamcorper vel, tincidunt ut quam.', '2021-10-27 01:01:51');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_komentar`
+--
+
+CREATE TABLE `tbl_komentar` (
+  `id_komentar` int(11) NOT NULL,
+  `id_artikel` int(11) NOT NULL,
+  `username_anggota` varchar(30) NOT NULL,
+  `isi_komentar` text NOT NULL,
+  `tanggal_komentar` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -148,6 +163,14 @@ ALTER TABLE `tbl_artikel_anggota`
   ADD KEY `id_anggota` (`id_anggota`);
 
 --
+-- Indexes for table `tbl_komentar`
+--
+ALTER TABLE `tbl_komentar`
+  ADD PRIMARY KEY (`id_komentar`),
+  ADD KEY `tbl_komentar_ibfk_1` (`username_anggota`),
+  ADD KEY `tbl_komentar_ibfk_2` (`id_artikel`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -155,19 +178,25 @@ ALTER TABLE `tbl_artikel_anggota`
 -- AUTO_INCREMENT for table `tbl_anggota`
 --
 ALTER TABLE `tbl_anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_artikel_admin`
 --
 ALTER TABLE `tbl_artikel_admin`
-  MODIFY `id_artikel_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_artikel_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_artikel_anggota`
 --
 ALTER TABLE `tbl_artikel_anggota`
   MODIFY `id_artikel_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_komentar`
+--
+ALTER TABLE `tbl_komentar`
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -184,6 +213,13 @@ ALTER TABLE `tbl_artikel_admin`
 --
 ALTER TABLE `tbl_artikel_anggota`
   ADD CONSTRAINT `tbl_artikel_anggota_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `tbl_anggota` (`id_anggota`);
+
+--
+-- Constraints for table `tbl_komentar`
+--
+ALTER TABLE `tbl_komentar`
+  ADD CONSTRAINT `tbl_komentar_ibfk_1` FOREIGN KEY (`username_anggota`) REFERENCES `tbl_anggota` (`username_anggota`),
+  ADD CONSTRAINT `tbl_komentar_ibfk_2` FOREIGN KEY (`id_artikel`) REFERENCES `tbl_artikel_admin` (`id_artikel_admin`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
