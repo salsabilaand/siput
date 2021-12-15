@@ -35,16 +35,18 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Beranda
-              <span class="sr-only">(current)</span>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="beranda.php">Beranda
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Tentang</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="profil.php">Profil</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="profil.php">Profil
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
         </ul>
       </div>
@@ -62,7 +64,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
         <!-- Blog Post -->
         <?php
         $judul_artikel=$_GET['judul_artikel'];
-        $q_tampil_anggota=mysqli_query($db,"SELECT * FROM tbl_artikel_admin WHERE judul_artikel='$judul_artikel'");
+        $q_tampil_anggota=mysqli_query($db,"SELECT * FROM tbl_artikel_anggota WHERE judul_artikel='$judul_artikel'");
         $r_tampil_anggota=mysqli_fetch_array($q_tampil_anggota);
         ?>
         <h1 class="my-4"><?php echo $r_tampil_anggota['judul_artikel']; ?></h1>
@@ -76,8 +78,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                 <p class="card-text"><?php echo $r_tampil_anggota['isi_artikel']; ?></p>
             </div>
             <div class="card-footer text-muted">
-                Posted on <?php echo $r_tampil_anggota['tanggal_artikel']; ?> by
-                <a href="#"><?php echo $r_tampil_anggota['username_admin']; ?></a>
+                Posted on <?php echo $r_tampil_anggota['tanggal_artikel']; ?>
             </div>
         </div><br>
         <div class="card">

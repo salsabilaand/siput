@@ -87,7 +87,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                 <div class="card-body">
                   <h2 class="card-title"><?php echo $r_tampil_artikel['judul_artikel']; ?></h2>
                   <p class="card-text"><?php echo $r_tampil_artikel['isi_artikel']; ?></p>
-                  <a href="beranda-detail-artikel.php?judul_artikel=<?php echo $r_tampil_artikel['judul_artikel'];?>" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="profil-detail-artikel.php?judul_artikel=<?php echo $r_tampil_artikel['judul_artikel'];?>" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                   Posted on <?php echo $r_tampil_artikel['tanggal_artikel']; ?>
