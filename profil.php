@@ -41,7 +41,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tentang</a>
+            <a class="nav-link" href="tentang-card.php">Tentang</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="profil.php">Profil
@@ -72,7 +72,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
                   <h1><b><?php echo $r_tampil_anggota['nama_umkm']; ?></b></h1>
                   <p class="card-text"><?php echo $r_tampil_anggota['nama_anggota']; ?></p>
                   <p class="card-text"><?php echo $r_tampil_anggota['alamat_umkm']; ?></p>
-                  <a href="#">Edit profil&emsp;</a><a href="login-umkm.php">Logout</a>
+                  <a href="profil-data-edit.php?username_anggota=<?php echo $r_tampil_anggota['username_anggota'];?>" class="tombol">Edit profil&emsp;</a><a href="login-umkm.php">Logout</a>
               </div>
           </div><br>
           <?php

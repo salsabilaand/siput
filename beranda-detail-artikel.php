@@ -35,13 +35,14 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Beranda
+            <a class="nav-link" href="beranda.php">Beranda
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tentang</a>
+            <a class="nav-link" href="tentang-card.php">Tentang</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="profil.php">Profil</a>
@@ -55,16 +56,17 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
   <div class="container">
 
     <div class="row">
+      <?php
+        $judul_artikel=$_GET['judul_artikel'];
+        $q_tampil_anggota=mysqli_query($db,"SELECT * FROM tbl_artikel_admin WHERE judul_artikel='$judul_artikel'");
+        $r_tampil_anggota=mysqli_fetch_array($q_tampil_anggota);
+      ?>
 
       <!-- Blog Entries Column -->
       <div class="col-md-12">
 
         <!-- Blog Post -->
-        <?php
-        $judul_artikel=$_GET['judul_artikel'];
-        $q_tampil_anggota=mysqli_query($db,"SELECT * FROM tbl_artikel_admin WHERE judul_artikel='$judul_artikel'");
-        $r_tampil_anggota=mysqli_fetch_array($q_tampil_anggota);
-        ?>
+      
         <h1 class="my-4"><?php echo $r_tampil_anggota['judul_artikel']; ?></h1>
         <div class="card">
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
@@ -81,22 +83,48 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
             </div>
         </div><br>
         <div class="card">
-            <div class="card-body">
+          <?php
+            $nama = $_SESSION['sesi'];
+          ?>
+          <div class="card-body">
                 <h2 class="card-title">Komentar</h2>
-                <form action="komentar-input-proses.php?id_artikel=<?php echo $r_tampil_anggota['id_artikel_admin'];?>" method="POST" enctype="multipart/form-data">
+                <form action="komentar-input-proses.php" method="POST" enctype="multipart/form-data">
                   <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input type="text" value="<?php echo $_SESSION['sesi']; ?>"  disabled="" class="form-control" id="exampleFormControlInput1">
-                    <input type="hidden" nama="username_anggota" value="<?php echo $_SESSION['sesi']; ?>" class="form-control" id="exampleFormControlInput1">
+                    <label>ID Artikel</label>
+                    <input type="text" value="<?php echo $r_tampil_anggota['id_artikel_admin']; ?>"  disabled="" class="form-control">
+                    <input type="hidden" nama="id_artikel_admin" value="<?php echo $r_tampil_anggota['id_artikel_admin']; ?>" class="form-control">
                   </div>
                   <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Isi Komentar</label>
-                    <textarea name="isi_komentar" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label>Nama</label>
+                    <input type="text" value="<?php echo $nama ?>"  disabled="" class="form-control">
+                    <input type="hidden" nama="username_anggota" value="<?php echo $nama; ?>" class="form-control">
                   </div>
-                  <input type="submit" name="simpan" value="kirim" class="btn btn-primary">
+                  <div class="mb-3">
+                    <label>Isi Komentar</label>
+                    <textarea name="isi_komentar" class="form-control" rows="3"></textarea>
+                  </div>
+                  <input type="submit" name="simpan" value="Kirim" class="btn btn-primary">
                 </form>
             </div>
-        </div>
+        </div><br>
+        <?php    
+          $q_tampil_komentar = mysqli_query($db, "SELECT * FROM tbl_komentar");
+          if(mysqli_num_rows($q_tampil_komentar)>0)
+          {
+            while($r_tampil_komentar=mysqli_fetch_array($q_tampil_komentar)){
+              ?>
+              <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title"><?php echo $r_tampil_komentar['username_anggota']; ?></h2>
+                    <p class="card-text"><?php echo $r_tampil_komentar['isi_komentar']; ?></p>
+                    Posted on <?php echo $r_tampil_komentar['tanggal_komentar']; ?>
+                </div>
+              </div>
+            <?php }
+          }
+          else {
+            echo "<p>Data Tidak Ditemukan<p>";
+          }?>	
       </div>
 
     </div>

@@ -41,7 +41,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="tentang-card.php">Tentang</a>
+            <a class="nav-link" href="#">Tentang</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="profil.php">Profil
@@ -62,42 +62,21 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
       <div class="col-md-12">
 
         <!-- Blog Post -->
-        <?php
-        $judul_artikel=$_GET['judul_artikel'];
-        $q_tampil_anggota=mysqli_query($db,"SELECT * FROM tbl_artikel_anggota WHERE judul_artikel='$judul_artikel'");
-        $r_tampil_anggota=mysqli_fetch_array($q_tampil_anggota);
-        ?>
-        <h1 class="my-4"><?php echo $r_tampil_anggota['judul_artikel']; ?></h1>
         <div class="card">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-body">
-                <p class="card-text text-center"><b>(<?php echo $r_tampil_anggota['caption_gambar_artikel']; ?>)</b></p>
-                <p class="card-text"><?php echo $r_tampil_anggota['isi_artikel']; ?></p>
-                <p class="card-text"><?php echo $r_tampil_anggota['isi_artikel']; ?></p>
-                <p class="card-text"><?php echo $r_tampil_anggota['isi_artikel']; ?></p>
-                <p class="card-text"><?php echo $r_tampil_anggota['isi_artikel']; ?></p>
-            </div>
-            <div class="card-footer text-muted">
-                Posted on <?php echo $r_tampil_anggota['tanggal_artikel']; ?>
+              <center><h2 class="card-text">
+              Selamat Datang di SIPUT JOMBANG<br>
+              <h5>(Sistem Informasi Promosi UMKM Tekstil Jombang)</h5>
+              <br>
+              <br>
+              <p> SIPUT Jombang ini adalah website sarana publikasi Sistem Informasi untuk mempromosikan Produk UMKM Tekstil di Jombang agar lebih meluas.<br>
+              Sistem informasi ini dibuat bagi para UMKM Tekstil di Jombang yang telah terdaftar karena hanya di pergunakan untuk promosi produk UMKM Tekstil yang valid dan terjamin.
+              <br>
+              Sistem informasi ini memiliki fitur pembuatan akun, posting produk berguna menjadi sarana dalam mempermudah pengenalan produk dan terdapat juga fitur komentar yag berguna sebagai sarana kolaborasi dengan UMKM Tekstil lainnya yang berada di  Jombang sesuai requirement yang telah disetujui.
+              </p>
+              <br>
             </div>
         </div><br>
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">Komentar</h2>
-                <form action="komentar-input-proses.php?id_artikel=<?php echo $r_tampil_anggota['id_artikel_admin'];?>" method="POST" enctype="multipart/form-data">
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input type="text" value="<?php echo $_SESSION['sesi']; ?>"  disabled="" class="form-control" id="exampleFormControlInput1">
-                    <input type="hidden" nama="username_anggota" value="<?php echo $_SESSION['sesi']; ?>" class="form-control" id="exampleFormControlInput1">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Isi Komentar</label>
-                    <textarea name="isi_komentar" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                  <input type="submit" name="simpan" value="kirim" class="btn btn-primary">
-                </form>
-            </div>
-        </div>
       </div>
 
     </div>

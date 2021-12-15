@@ -41,7 +41,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tentang</a>
+            <a class="nav-link" href="tentang-card.php">Tentang</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="profil.php">Profil
