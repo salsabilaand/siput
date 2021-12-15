@@ -44,6 +44,9 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
           <li class="nav-item">
             <a class="nav-link" href="#">Tentang</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profil.php">Profil</a>
+          </li>
         </ul>
       </div>
     </div>
