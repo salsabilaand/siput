@@ -109,7 +109,9 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
           <div class="card-body">
             <div class="input-group">
               <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Posting!</button>
+                <form action="profil-input-artikel.php">
+                  <input type="submit" name="simpan" value="Posting!" class="btn btn-primary btn-round">
+                </form>
               </span>
             </div>
           </div>
