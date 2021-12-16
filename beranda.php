@@ -140,8 +140,18 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
 
-        <!-- Search Widget -->
         <div class="card my-4">
+          <h5 class="card-header">Hai <?php echo$_SESSION['sesi']; ?>!</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <p>Ikuti terus informasi terbaru mengenai kegiatan UMKM, dan pelajari cara mengemas informasi yang baik mengenai usaha anda!</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Widget -->
+        <!-- <div class="card my-4">
           <h5 class="card-header">Cari UMKM</h5>
           <div class="card-body">
             <div class="input-group">
@@ -151,10 +161,10 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Categories Widget -->
-        <div class="card my-4">
+        <!-- <div class="card my-4">
           <h5 class="card-header">Kategori</h5>
           <div class="card-body">
             <div class="row">
@@ -177,7 +187,7 @@ if(isset($_SESSION['sesi']) && !empty($_SESSION['sesi'])){
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
     </div>
